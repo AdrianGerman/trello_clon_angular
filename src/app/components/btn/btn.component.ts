@@ -19,6 +19,9 @@ export class BtnComponent {
       'bg-primary-600': this.color === 'primary',
       'hover:bg-primary-800': this.color === 'primary',
       'focus:ring-primary-300': this.color === 'primary',
+      'bg-blue-600': this.color === 'sky',
+      'hover:bg-blue-800': this.color === 'sky',
+      'focus:ring-blue-300': this.color === 'sky',
     };
   }
 }
