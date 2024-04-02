@@ -29,7 +29,6 @@ import { ToDo, Column } from '../../models/todo.model';
   ],
 })
 export class BoardComponent {
-
   columns: Column[] = [
     {
       title: 'ToDo',
@@ -46,8 +45,7 @@ export class BoardComponent {
           id: '3',
           title: 'task 3',
         },
-
-      ]
+      ],
     },
     {
       title: 'Doing',
@@ -55,8 +53,8 @@ export class BoardComponent {
         {
           id: '3',
           title: 'watch a new job courses',
-        }
-      ]
+        },
+      ],
     },
     {
       title: 'Done',
@@ -64,34 +62,36 @@ export class BoardComponent {
         {
           id: '3',
           title: 'watch a new cap ane',
-        }
-      ]
-    }
-  ]
+        },
+      ],
+    },
+  ];
 
   todos: ToDo[] = [];
-
   doing: ToDo[] = [];
   done: ToDo[] = [];
 
   drop(event: CdkDragDrop<ToDo[]>) {
     if (event.previousContainer === event.container) {
-      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+      moveItemInArray(
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex
+      );
     } else {
       transferArrayItem(
         event.previousContainer.data,
         event.container.data,
         event.previousIndex,
         event.currentIndex
-      )
+      );
     }
   }
-
 
   addColumn() {
     this.columns.push({
       title: 'New Column',
       todos: [],
-    })
+    });
   }
 }
