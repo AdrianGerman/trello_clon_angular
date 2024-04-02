@@ -7,7 +7,7 @@ import {
   transferArrayItem,
 } from '@angular/cdk/drag-drop';
 import { NavbarComponent } from '../../components/navbar/navbar.component';
-import { ToDo } from '../../models/todo.model';
+import { ToDo, Column } from '../../models/todo.model';
 
 @Component({
   selector: 'app-board',
@@ -29,33 +29,50 @@ import { ToDo } from '../../models/todo.model';
   ],
 })
 export class BoardComponent {
-  todos: ToDo[] = [
-    {
-      id: '1',
-      title: 'task 1',
-    },
-    {
-      id: '2',
-      title: 'task 2',
-    },
-    {
-      id: '3',
-      title: 'task 3',
-    },
-  ];
 
-  doing: ToDo[] = [
+  columns: Column[] = [
     {
-      id: '3',
-      title: 'watch a new job courses',
+      title: 'ToDo',
+      todos: [
+        {
+          id: '1',
+          title: 'task 1',
+        },
+        {
+          id: '2',
+          title: 'task 2',
+        },
+        {
+          id: '3',
+          title: 'task 3',
+        },
+
+      ]
     },
-  ];
-  done: ToDo[] = [
     {
-      id: '3',
-      title: 'watch a new cap ane',
+      title: 'Doing',
+      todos: [
+        {
+          id: '3',
+          title: 'watch a new job courses',
+        }
+      ]
     },
-  ];
+    {
+      title: 'Done',
+      todos: [
+        {
+          id: '3',
+          title: 'watch a new cap ane',
+        }
+      ]
+    }
+  ]
+
+  todos: ToDo[] = [];
+
+  doing: ToDo[] = [];
+  done: ToDo[] = [];
 
   drop(event: CdkDragDrop<ToDo[]>) {
     if (event.previousContainer === event.container) {
@@ -68,5 +85,13 @@ export class BoardComponent {
         event.currentIndex
       )
     }
+  }
+
+
+  addColumn() {
+    this.columns.push({
+      title: 'New Column',
+      todos: [],
+    })
   }
 }
