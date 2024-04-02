@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { DialogModule, Dialog } from '@angular/cdk/dialog';
 import {
   CdkDragDrop,
   moveItemInArray,
@@ -8,11 +9,12 @@ import {
 } from '@angular/cdk/drag-drop';
 import { NavbarComponent } from '../../components/navbar/navbar.component';
 import { ToDo, Column } from '../../models/todo.model';
+import { TodoDialogComponent } from '../../components/todo-dialog/todo-dialog.component';
 
 @Component({
   selector: 'app-board',
   standalone: true,
-  imports: [CommonModule, DragDropModule, NavbarComponent],
+  imports: [CommonModule, DragDropModule, NavbarComponent, DialogModule],
   templateUrl: './board.component.html',
   styles: [
     `
@@ -29,6 +31,11 @@ import { ToDo, Column } from '../../models/todo.model';
   ],
 })
 export class BoardComponent {
+
+  constructor(
+    private dialog: Dialog
+  ) { }
+
   columns: Column[] = [
     {
       title: 'ToDo',
@@ -94,4 +101,12 @@ export class BoardComponent {
       todos: [],
     });
   }
+
+  openDialog() {
+    this.dialog.open(TodoDialogComponent, {
+      minWidth: '300px',
+      maxWidth: '50%'
+    })
+  }
+
 }
