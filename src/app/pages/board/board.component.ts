@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { DialogModule, Dialog } from '@angular/cdk/dialog';
@@ -31,10 +31,7 @@ import { TodoDialogComponent } from '../../components/todo-dialog/todo-dialog.co
   ],
 })
 export class BoardComponent {
-
-  constructor(
-    private dialog: Dialog
-  ) { }
+  constructor(private dialog: Dialog) {}
 
   columns: Column[] = [
     {
@@ -102,11 +99,16 @@ export class BoardComponent {
     });
   }
 
-  openDialog() {
-    this.dialog.open(TodoDialogComponent, {
+  openDialog(todo: ToDo) {
+    const dialogRef = this.dialog.open(TodoDialogComponent, {
       minWidth: '300px',
-      maxWidth: '50%'
-    })
+      maxWidth: '50%',
+      data: {
+        todo: todo,
+      },
+    });
+    dialogRef.closed.subscribe((output) => {
+      console.log(output);
+    });
   }
-
 }
