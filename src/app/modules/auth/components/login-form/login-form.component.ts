@@ -25,7 +25,9 @@ export class LoginFormComponent {
     private router: Router,
     private authService: AuthService,
     private route: ActivatedRoute
-  ) {}
+  ) {
+    this.route.queryParams;
+  }
 
   doLogin() {
     if (this.form.valid) {
