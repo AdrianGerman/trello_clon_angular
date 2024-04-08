@@ -49,7 +49,7 @@ export class RegisterFormComponent {
       this.authService.register(name, email, password).subscribe({
         next: () => {
           this.status = 'success';
-          this.router.navigate(['/login']);
+          this.router.navigate(['/app/boards']);
         },
         error: () => {
           this.status = 'failed';
