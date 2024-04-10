@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { TokenService } from '@services/token.service';
 import {
   faBell,
   faInfoCircle,
@@ -24,10 +25,18 @@ export class NavbarComponent {
 
   user$ = this.authService.user$;
 
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+    private tokenService: TokenService
+  ) {}
 
   logout() {
     this.authService.logout();
     this.router.navigate(['/login']);
+  }
+
+  isValidToken() {
+    console.log(this.tokenService.isValidToken());
   }
 }
