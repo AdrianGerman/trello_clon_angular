@@ -25,18 +25,10 @@ export class NavbarComponent {
 
   user$ = this.authService.user$;
 
-  constructor(
-    private authService: AuthService,
-    private router: Router,
-    private tokenService: TokenService
-  ) {}
+  constructor(private authService: AuthService, private router: Router) {}
 
   logout() {
     this.authService.logout();
     this.router.navigate(['/login']);
-  }
-
-  isValidToken() {
-    console.log(this.tokenService.isValidToken());
   }
 }

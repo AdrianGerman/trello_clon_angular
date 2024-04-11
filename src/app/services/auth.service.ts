@@ -7,7 +7,6 @@ import { TokenService } from './token.service';
 import { ResponseLogin } from '@models/auth.model';
 import { User } from '@models/user.model';
 import { BehaviorSubject } from 'rxjs';
-import { checkToken } from '@interceptors/token.interceptor';
 
 @Injectable({
   providedIn: 'root',
@@ -85,7 +84,7 @@ export class AuthService {
   }
 
   getProfile() {
-    return this.meService.getProfile().pipe(
+    return this.meService.getMeProfile().pipe(
       tap((user) => {
         this.user$.next(user);
       })
@@ -94,5 +93,6 @@ export class AuthService {
 
   logout() {
     this.tokenService.removeToken();
+    this.tokenService.removeRefreshToken;
   }
 }

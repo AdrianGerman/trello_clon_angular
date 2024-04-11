@@ -13,12 +13,12 @@ export class MeService {
 
   constructor(private http: HttpClient) {}
 
-  getProfile() {
+  getMeProfile() {
     return this.http.get<User>(`${this.apiUrl}/api/v1/me/profile`, {
       context: checkToken(),
     });
   }
-  getBoards() {
+  getMeBoards() {
     return this.http.get<User>(`${this.apiUrl}/api/v1/me/boards`, {
       context: checkToken(),
     });
