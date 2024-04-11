@@ -50,6 +50,7 @@ export class TokenService {
     }
     return false;
   }
+
   isValidRefreshToken() {
     const token = this.getRefreshToken();
     if (!token) {
