@@ -1,9 +1,9 @@
-import { List } from 'postcss/lib/list';
+import { List } from './list.model';
 
 export interface Card {
   id: string;
   title: string;
   description: string;
-  position: string;
+  position: number;
   list: List;
 }

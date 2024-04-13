@@ -79,7 +79,7 @@ export class BoardComponent implements OnInit {
       minWidth: '300px',
       maxWidth: '50%',
       data: {
-        todo: card,
+        card: card,
       },
     });
     dialogRef.closed.subscribe((output) => {
