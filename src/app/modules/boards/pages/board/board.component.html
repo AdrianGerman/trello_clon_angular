@@ -16,6 +16,13 @@
             {{ card.title }} - {{ card.position }}
           </div>
         </div>
+        <div class="mr-5">
+          <app-btn *ngIf="!list.showCardForm" color="light" (click)="openFormCard(list)">Add
+            board</app-btn>
+          <div *ngIf="list.showCardForm">
+            active form
+          </div>
+        </div>
       </div>
       <app-btn color="light" class="shrink-0" (click)="addColumn()">Add Column</app-btn>
     </div>
