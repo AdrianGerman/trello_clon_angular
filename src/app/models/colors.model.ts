@@ -11,7 +11,9 @@ export type Colors =
   | 'light'
   | 'sky';
 
-export const COLORS = {
+export type ObjColors = Record<string, Record<string, boolean>>;
+
+export const COLORS: ObjColors = {
   success: {
     'bg-success-700': true,
     'hover:bg-success-800': true,
@@ -66,5 +68,38 @@ export const COLORS = {
     'bg-gray-700': true,
     'hover:bg-gray-800': true,
     'text-white': true,
+  },
+};
+
+export const BACKGROUNDS: ObjColors = {
+  success: {
+    'bg-success-600': true,
+  },
+  primary: {
+    'bg-primary-600': true,
+  },
+  danger: {
+    'bg-danger-500': true,
+  },
+  light: {
+    'bg-gray-600': true,
+  },
+  sky: {
+    'bg-sky-600': true,
+  },
+  yellow: {
+    'bg-yellow-600': true,
+  },
+  green: {
+    'bg-green-600': true,
+  },
+  red: {
+    'bg-red-500': true,
+  },
+  violet: {
+    'bg-violet-500': true,
+  },
+  gray: {
+    'bg-gray-6600': true,
   },
 };

@@ -16,6 +16,7 @@ import { Board } from '@models/board.model';
 import { Card } from '@models/card.model';
 import { CardsService } from '@services/cards.service';
 import { List } from '@models/list.model';
+import { BACKGROUNDS } from '@models/colors.model';
 
 @Component({
   selector: 'app-board',
@@ -43,6 +44,7 @@ export class BoardComponent implements OnInit {
   });
 
   showListForm = false;
+  colorBackgrounds = BACKGROUNDS;
 
   todos: ToDo[] = [];
   doing: ToDo[] = [];
@@ -173,5 +175,13 @@ export class BoardComponent implements OnInit {
 
   closeCardForm(list: List) {
     list.showCardForm = false;
+  }
+
+  get colors() {
+    if (this.board) {
+      const classes = this.colorBackgrounds[this.board.backgroundColor];
+      return classes ? classes : {};
+    }
+    return {};
   }
 }
