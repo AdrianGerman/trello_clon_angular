@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import {
   CdkDragDrop,
   moveItemInArray,
@@ -31,6 +32,10 @@ import { List } from '@models/list.model';
 })
 export class BoardComponent implements OnInit {
   board: Board | null = null;
+  inputCard = new FormControl<string>('', {
+    nonNullable: true,
+    validators: [Validators.required],
+  });
 
   todos: ToDo[] = [];
   doing: ToDo[] = [];
@@ -125,5 +130,14 @@ export class BoardComponent implements OnInit {
         };
       });
     }
+  }
+
+  createCard() {
+    const title = this.inputCard.value;
+    console.log(title);
+  }
+
+  closeCardForm(list: List) {
+    list.showCardForm = false;
   }
 }

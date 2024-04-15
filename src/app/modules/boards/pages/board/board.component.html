@@ -16,11 +16,15 @@
             {{ card.title }} - {{ card.position }}
           </div>
         </div>
-        <div class="mr-5">
+        <div>
           <app-btn *ngIf="!list.showCardForm" color="light" (click)="openFormCard(list)">Add
             board</app-btn>
-          <div *ngIf="list.showCardForm">
-            active form
+          <div class="w-full" *ngIf="list.showCardForm">
+            <textarea [formControl]="inputCard" class="w-full"></textarea>
+            <div class="flex space-x-2 justify-between">
+              <app-btn color="success" (click)="createCard()">Create</app-btn>
+              <app-btn color="light" (click)="closeCardForm(list)">Close</app-btn>
+            </div>
           </div>
         </div>
       </div>
